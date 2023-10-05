@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="keys">
+      <div data-key="65" class="key">
+        <kbd>A</kbd>
+        <span class="sound">Thunder</span>
+      </div>
+      <div data-key="83" class="key">
+        <kbd>S</kbd>
+        <span class="sound">LowImpact</span>
+      </div>
+      <div data-key="68" class="key">
+        <kbd>D</kbd>
+        <span class="sound">Explosion</span>
+      </div>
+      <div data-key="70" class="key">
+        <kbd>F</kbd>
+        <span class="sound">RainSound</span>
+      </div>
+      <div data-key="71" class="key">
+        <kbd>G</kbd>
+        <span class="sound">Explosion</span>
+      </div>
+      <div data-key="72" class="key">
+        <kbd>H</kbd>
+        <span class="sound">Applause</span>
+      </div>
+      <div data-key="74" class="key">
+        <kbd>J</kbd>
+        <span class="sound">snare</span>
+      </div>
+      <div data-key="75" class="key">
+        <kbd>K</kbd>
+        <span class="sound">tom</span>
+      </div>
+      <div data-key="76" class="key">
+        <kbd>L</kbd>
+        <span class="sound">tink</span>
+      </div>
+    </div>
+    <audio data-key="65" src="sounds/natural-thunder-113219.mp3"></audio>
+    <audio data-key="83" src="sounds/low-impactwav-14905.mp3"></audio>
+    <audio data-key="68" src="sounds/hq-explosion-6288.mp3"></audio>
+    <audio
+      data-key="70"
+      src="sounds/rain-sound-and-rainforest-6293.mp3"
+    ></audio>
+    <audio data-key="71" src="sounds/hq-explosion-6288.mp3"></audio>
+    <audio data-key="72" src="sounds/low-impactwav-14905.mp3"></audio>
+    <audio
+      data-key="74"
+      src="sounds/rain-sound-and-rainforest-6293.mp3"
+    ></audio>
+    <audio data-key="75" src="sounds/natural-thunder-113219.mp3"></audio>
+    <audio data-key="76" src="sounds/hq-explosion-6288.mp3"></audio>
+    <script>
+      function playSound(e) {
+        const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+        const key = document.querySelector(`div[data-key="${e.keyCode}"]`);
+        if (!audio) return;
+        key.classList.add("playing");
+        audio.currentTime = 0;
+        audio.play();
+      }
+      window.addEventListener("keydown", playSound);
+      const keys = Array.from(document.querySelectorAll(".key"));
+      keys.forEach((key) =>
+        key.addEventListener("transitionend", removeTransition)
+      );
+
+      function removeTransition(e) {
+        if (e.propertyName !== "transform") return;
+        e.target.classList.remove("playing");
+      }
+    </script>
+  </body>
+</html>
