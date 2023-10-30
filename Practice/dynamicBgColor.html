@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event Delegation</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      .container {
+        border: 1px solid;
+        height: 10rem;
+        width: 10rem;
+      }
+
+      .container > div:hover {
+        cursor: pointer;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="red">red</div>
+      <div class="blue">blue</div>
+      <div class="green">green</div>
+    </div>
+    <script>
+      // Write JS Solution Here =================================
+
+      const cont = document.querySelector(".container");
+      const handleColorChange = (e) => {
+        const clickedEle = e.target;
+          if (clickedEle.classList.contains("red")) {
+            cont.style.backgroundColor = "red";
+          } else if (clickedEle.classList.contains("blue")) {
+            cont.style.backgroundColor = "blue";
+          } else {
+            cont.style.backgroundColor = "green";
+          }
+        }
+      cont.addEventListener("click", handleColorChange);
+    </script>
+  </body>
+</html>

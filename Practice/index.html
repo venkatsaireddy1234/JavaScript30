@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <!-- 
+    Don't make any changes to the HTML CODE.
+    Just write the solution code in the designated sript tag
+-->
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      .container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        padding-top: 5rem;
+      }
+
+      .red {
+        background-color: red;
+      }
+
+      .card {
+        border: 1px solid;
+        height: 10rem;
+        width: 10rem;
+        margin: 2rem;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="card"></div>
+      <div class="card"></div>
+      <div class="card"></div>
+      <div class="card"></div>
+      <div class="card"></div>
+      <div class="card red"></div>
+      <div class="card"></div>
+      <div class="card"></div>
+      <div class="card"></div>
+      <div class="card"></div>
+    </div>
+    <script>
+      //  Write solution here ==============================
+
+      function selectSiblings(node) {
+        const siblings = [];
+        let sibling = node.parentNode.firstElementChild;
+
+        while (sibling) {
+          if (sibling !== node) {
+            siblings.push(sibling);
+          }
+          sibling = sibling.nextElementSibling;
+        }
+
+        return siblings;
+      }
+
+      // Find the red card (by selecting the element with the 'red' class)
+      const redCard = document.querySelector(".red");
+
+      // Get all its siblings
+      const redCardSiblings = selectSiblings(redCard);
+      console.log(redCardSiblings);
+      // Remove all siblings
+      redCardSiblings.forEach((sibling) => {
+        sibling.remove();
+      });
+    </script>
+  </body>
+</html>

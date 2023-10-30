@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- Please NOTE that the link to assets (like images) need to be set in global context.
+For example:
+To access an image from assets folder correct way to set src attribute is 
+
+src = 'profile.png'
+
+instead of 
+
+src = './assets/profile.png'
+
+
+You can utilize methods like isNan(value), Element.focus(), Element.nextElementSibling 
+and Element.previousElementSibling to make the above-mentioned features work.
+
+-->
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ticket Management App</title>
+
+    <style>
+      .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+      }
+
+      .input {
+        width: 40px;
+        border: none;
+        border-bottom: 3px solid rgba(0, 0, 0, 0.5);
+        margin: 0 10px;
+        text-align: center;
+        font-size: 36px;
+        cursor: not-allowed;
+        pointer-events: none;
+      }
+
+      .input:focus {
+        border-bottom: 3px solid orange;
+        outline: none;
+      }
+
+      .input:nth-child(1) {
+        cursor: pointer;
+        pointer-events: all;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <div id="inputs" class="inputs">
+        <input class="input" type="text" inputmode="numeric" maxlength="1" />
+        <input class="input" type="text" inputmode="numeric" maxlength="1" />
+        <input class="input" type="text" inputmode="numeric" maxlength="1" />
+        <input class="input" type="text" inputmode="numeric" maxlength="1" />
+      </div>
+    </div>
+    <script>
+      let input = document.querySelector(".inputs");
+      input.addEventListener("input", function (e) {
+        if (isNaN(e.target.value)) {
+          e.target.value = "";
+          return;
+        }
+        if (e.target.value != "") {
+          if (e.target.nextElementSibling) {
+            e.target.nextElementSibling.focus();
+          }
+        }
+      });
+      input.addEventListener("keyup", (e) => {
+        if (e.key == "Backspace" || e.key == "Delete") {
+          e.target.value = "";
+          if (e.target.previousElementSibling) {
+            e.target.previousElementSibling.focus();
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- Please NOTE that the link to assets (like images) need to be set in global context.
+    For example:
+    To access an image from assets folder correct way to set src attribute is 
+
+    src = 'profile.png'
+
+    instead of 
+
+    src = './assets/profile.png'
+    -->
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ticket Management App</title>
+
+    <style>
+      .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .number {
+        font-size: 50px;
+      }
+
+      .row {
+        margin-top: 15px;
+      }
+
+      .add {
+        background-color: green;
+        font-size: 40px;
+        width: 50px;
+        border-radius: 5px;
+        border: 0px solid;
+        cursor: pointer;
+      }
+
+      .subtract {
+        background-color: red;
+        font-size: 40px;
+        width: 50px;
+        border-radius: 5px;
+        border: 0px solid;
+        cursor: pointer;
+      }
+
+      .reset {
+        margin-top: 10px;
+        background-color: yellow;
+        font-size: 40px;
+        border-radius: 5px;
+        border: 1px solid black;
+        cursor: pointer;
+      }
+
+      .add:active {
+        background-color: lightgreen;
+      }
+
+      .subtract:active {
+        background-color: lightcoral;
+      }
+
+      .reset:active {
+        background-color: lightyellow;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>Counter</h1>
+      <span id="number" class="number">0</span>
+      <div class="row">
+        Increment / Decrement by
+        <input id="increment" type="number" min="1" max="10" value="1" />
+      </div>
+      <div class="row">
+        <button id="add" class="add">+</button>
+        <button id="subtract" class="subtract">-</button>
+      </div>
+      <button id="reset" class="reset">Reset</button>
+    </div>
+    <script>
+      const number = document.querySelector(".number");
+      console.log(number);
+      const changeTo = document.querySelector("#increment");
+      const add = document.querySelector(".add");
+      const subtract = document.querySelector(".subtract");
+      add.addEventListener("click", (e) => {
+        number.innerText =
+          parseInt(number.innerText) + parseInt(changeTo.value);
+      });
+      subtract.addEventListener("click", () => {
+        number.textContent =
+          parseInt(number.textContent) - parseInt(changeTo.value);
+      });
+      const reset = document.querySelector(".reset");
+      reset.addEventListener("click", () => {
+        number.innerHTML = 0;
+      });
+      if(number.innerHTML < 0) {
+        number.innerHTML = 0;
+      }
+    //   number.addEventListener('')   
+    </script>
+  </body>
+</html>

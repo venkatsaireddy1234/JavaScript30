@@ -1,0 +1,35 @@
+.container{
+    width: fit-content;
+    margin: auto;
+    background-color: green;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+}
+
+.fill{
+    background-image: url(https://picsum.photos/id/28/367/267);
+    width: 100px;
+    height: 100px;
+    top:5px;
+    left: 5px;
+    position: relative;
+    cursor: pointer;
+}
+
+.empty{
+    width: 110px;
+    height: 110px;
+    margin: 10px;
+    background-color: rgba(255, 242, 242, 0.788);
+}
+
+/* .boxHover{
+    border: 5px dotted rgb(255, 0,0);
+} */
+
+
+
+/* .invisible{
+    display: none;
+} */
